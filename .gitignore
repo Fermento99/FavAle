@@ -1,8 +1,4 @@
-/server/node_modules
-/web-app/node_modules
-
-# testing
-/web-app/coverage
-
-# production
-/web-app/build
+/server/node_modules/
+/web-app/node_modules/
+/web-app/coverage/
+/web-app/build/
