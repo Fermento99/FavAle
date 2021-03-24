@@ -12,10 +12,12 @@ const Input = styled.input`
   width: 100%;
   border-radius: 5px;
   border: solid black 1px;
+  box-shadow: 2px 2px black;
 `
 
 const InputBox = styled.div`
   width: 40%;
+  min-width: 330px;
 `
 
 export default function input({ type, label, childref }) {

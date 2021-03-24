@@ -1,31 +1,20 @@
 import React, { useRef } from 'react'
-import styled from 'styled-components'
 import LoginInput from './utils/LoginInput'
 import LoginButton from './utils/LoginButton'
 import RegisterButton from './utils/RegisterButton'
+import {Logo, Page} from '../common'
 
-const Page = styled.div`
-  margin-top: 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
 
-const Logo = styled.img`
-  margin: 2em;
-`
-
+const login = (user, pass) => {
+  const u = user.current.value
+  const p = pass.current.value
+  const data = { 'user': u, 'password': p };
+  console.log(data);
+}
 
 export default function LoginPage() {
   const user = useRef()
   const pass = useRef()
-
-  const login = (user, pass) => {
-    let u = user.current.value
-    let p = pass.current.value
-    const data = { 'user': u, 'password': p };
-    console.log(data);
-  }
 
   return (
     <Page>

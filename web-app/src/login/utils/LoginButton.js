@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const UniButton = styled.button`
   width: 40%;
+  min-width: 330px;
   margin: 1em;
   height: 2.8em;
   color: white;
