@@ -7,6 +7,13 @@ export const Page = styled.div`
   align-items: center;
 `
 
-export const Logo = styled.img`
+const LogoImg = styled.img`
   margin: 2em;
 `
+
+export function Logo() {
+  return(
+    // TODO: add logo src
+    <LogoImg src="" alt="Logo GrupaVIST" />
+  )
+}

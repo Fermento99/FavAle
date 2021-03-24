@@ -25,8 +25,8 @@ export default function RegisterPage() {
       <RegisterInput type="text" label="Login" childref={user} />
       <RegisterInput type="email" label="E-mail" childref={mail} />
       <RegisterInput type="password" label="Hasło" childref={pass} />
-      <LoginButton text="ZAREJESTRUJ SIĘ" onClick={() => {register(user, mail, pass) }} />
-      <Logo src="" alt="Logo GrupaVIST" />
+      <LoginButton text="ZAREJESTRUJ SIĘ" onClick={() => {register(user, mail, pass)}} />
+      <Logo />
     </Page>
   )
 }

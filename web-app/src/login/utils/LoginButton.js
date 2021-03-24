@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { withRouter } from 'react-router'
 
 const UniButton = styled.button`
   width: 40%;
@@ -12,8 +13,8 @@ const UniButton = styled.button`
   border-radius: 5px;
 `
 
-export default function LoginButton({ text, onClick }) {
+export default withRouter(function LoginButton({ text, onClick }) {
   return (
     <UniButton onClick={onClick}>{text}</UniButton>
   )
-}
+})

@@ -1,8 +1,9 @@
 import React, { useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 import LoginInput from './utils/LoginInput'
 import LoginButton from './utils/LoginButton'
 import RegisterButton from './utils/RegisterButton'
-import {Logo, Page} from '../common'
+import { Logo, Page } from '../common'
 
 
 const login = (user, pass) => {
@@ -15,15 +16,16 @@ const login = (user, pass) => {
 export default function LoginPage() {
   const user = useRef()
   const pass = useRef()
+  const history = useHistory()
 
   return (
     <Page>
       <h1>ZALOGUJ SIĘ</h1>
       <LoginInput type="text" label="Login" childref={user} />
       <LoginInput type="password" label="Hasło" childref={pass} />
-      <LoginButton text="ZALOGUJ SIĘ" onClick={() => login(user, pass)} />
+      <LoginButton text="ZALOGUJ SIĘ" onClick={() => { login(user, pass); history.push('/main') }} />
       <RegisterButton />
-      <Logo src="" alt="Logo GrupaVIST" />
+      <Logo />
     </Page>
   )
 }
