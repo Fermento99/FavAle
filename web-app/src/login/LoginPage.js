@@ -23,9 +23,10 @@ const login = (user, pass, hist) => {
     .then(data => {
       if (data.status) {
         console.log(data)
-        hist.push({pathname: '/main', state: {token: data.token}})
+        hist.push('/main')
+        window.sessionStorage.setItem("FA_token", data.token)
       }
-      else 
+      else
         alert(`You couldn't login. Error message: ${data.err}`)
     })
 }

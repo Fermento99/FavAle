@@ -25,7 +25,7 @@ const register = (user, callback) => {
   const { username, email, password } = user;
   if (!validateUser(username) || !validateEmail(email)) {
     console.log("username or email not validated");
-    return callback({ staus: false, err: "username or email not validated", code: 1 });
+    return callback({ status: false, err: "username or email not validated", code: 1 });
   }
 
   const hash = bcrypt.hashSync(password, 10);
@@ -72,7 +72,7 @@ const addFav = (fav, callback) => {
       console.log(err);
       return callback({ status: false, err: err, code: 2 })
     }
-    return callback({ staus: true });
+    return callback({ status: true });
   });
   connection.end();
 }
@@ -88,7 +88,7 @@ const remFav = (fav, callback) => {
       return callback({ status: false, err: err, code: 2 })
     }
     const aff = res.affectedRows
-    if (aff != 1) {
+    if (aff !== 1) {
       msg = `removed ${aff} rows instead of 1`
       console.log(msg);
       return callback({ status: false, err: msg, code: 2 })

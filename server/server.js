@@ -12,6 +12,7 @@ const createToken = user => {
 }
 
 const checkToken = (token, callback) => {
+  console.log(token);
   jwt.verify(token.split(" ")[1], process.env.JWT_TOKEN_SECRET, (err, payload) => {
     if (err) {
       console.log(err);
@@ -29,11 +30,14 @@ app.post('/favs', (req, res) => {
   checkToken(token, (jwtres) => {
     if (jwtres.status)
       dbmanager.addFav({ email: jwtres.email, favId: beerId }, (dbres) => {
-        if (dbres.status)
-          res.sendStatus(200);
+        console.log(dbres)
+        if (dbres.status) {
+          res.status(200);
+          res.json({ dbresponse: false, token: createToken(jwtres) });
+        }
         else {
           res.status(400);
-          res.json({dbresponse: dbres, token: createToken(jwtres)});
+          res.json({ dbresponse: dbres, token: createToken(jwtres) });
         }
       });
     else {
@@ -51,11 +55,11 @@ app.delete('/favs', (req, res) => {
       dbmanager.remFav({ email: jwtres.email, favId: beerId }, (dbres) => {
         if (dbres.status) {
           res.status(200);
-          res.json({token: createToken(jwtres)})
+          res.json({ dbresponse: false, token: createToken(jwtres) });
         }
         else {
           res.status(400);
-          res.json({dbresponse: dbres, token: createToken(jwtres)});
+          res.json({ dbresponse: dbres, token: createToken(jwtres) });
         }
       });
     else {
@@ -72,10 +76,10 @@ app.get('/favs', (req, res) => {
     if (jwtres.status)
       dbmanager.getFav({ email: jwtres.email, favId: beerId }, (dbres) => {
         if (dbres.status)
-          res.json({data: dbres.data, token: createToken(jwtres)});
+          res.json({ data: dbres.data, token: createToken(jwtres) });
         else {
           res.status(400);
-          res.json({dbresponse: dbres, token: createToken(jwtres)});
+          res.json({ dbresponse: dbres, token: createToken(jwtres) });
         }
       });
     else {
@@ -90,7 +94,7 @@ app.post('/auth/login', (req, res) => {
   console.log(req.body)
   dbmanager.login(req.body, (response) => {
     if (response.status)
-      res.json({token: createToken(req.body), status: true});
+      res.json({ token: createToken(req.body), status: true });
     else {
       res.status(401);
       res.json(response);

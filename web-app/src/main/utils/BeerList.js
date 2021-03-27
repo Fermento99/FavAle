@@ -13,13 +13,13 @@ const BeersConteiner = styled.div`
 `
 
 export default function BeerList({ curr }) {
-  const [state, setState] = useState({'curr': -1, 'beers':[]})
+  const [state, setState] = useState({ 'curr': -1, 'beers': [] })
 
   if (state.curr !== curr) {
-    console.log('fetching')
+    console.log('fetching PUNKAPI')
     fetch(`https://api.punkapi.com/v2/beers?page=${curr}&per_page=5`)
       .then(res => res.json())
-      .then(data => setState({'curr': curr, 'beers': data}));
+      .then(data => setState({ 'curr': curr, 'beers': data }));
     return (
       // TODO: change to spiners 
       <div>

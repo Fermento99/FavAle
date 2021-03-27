@@ -4,9 +4,6 @@ import RegisterPage from './login/RegisterPage';
 import MainPage from './main/MainPage'
 
 function App() {
-  // TODO: iniciate from serwer data
-  let favourites = []
-  window.sessionStorage.setItem('favourites', JSON.stringify(favourites)) 
   return (
     <Router>
       <Route exact path="/">
