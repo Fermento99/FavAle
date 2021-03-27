@@ -86,10 +86,11 @@ app.get('/favs', (req, res) => {
 });
 
 // managing account
-app.get('/auth/login', (req, res) => {
+app.post('/auth/login', (req, res) => {
+  console.log(req.body)
   dbmanager.login(req.body, (response) => {
     if (response.status)
-      res.send(createToken(req.body));
+      res.json({token: createToken(req.body), status: true});
     else {
       res.status(401);
       res.json(response);
@@ -98,8 +99,9 @@ app.get('/auth/login', (req, res) => {
 });
 
 app.post('/auth/register', (req, res) => {
+  console.log(req.body);
   dbmanager.register(req.body, (response) => {
-    if (response.staus)
+    if (response.status)
       res.sendStatus(200);
     else {
       res.status(400);
@@ -110,6 +112,11 @@ app.post('/auth/register', (req, res) => {
 
 // serving app
 app.get('/app/*', (req, res) => {
+  //TODO: implement
+});
+
+// mail
+app.get('/mail', (req, res) => {
   //TODO: implement
 });
 

@@ -36,7 +36,7 @@ const register = (user, callback) => {
       console.log(err);
       return callback({ status: false, err: err, code: 2 });
     }
-    return callback({ satus: true });
+    return callback({ status: true });
   });
   connection.end();
 }

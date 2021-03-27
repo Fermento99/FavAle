@@ -6,11 +6,28 @@ import RegisterButton from './utils/RegisterButton'
 import { Logo, Page } from '../common'
 
 
-const login = (user, pass) => {
+const login = (user, pass, hist) => {
   const u = user.current.value
   const p = pass.current.value
-  const data = { 'user': u, 'password': p };
+  pass.current.value = ''
+  user.current.value = ''
+  const data = { 'email': u, 'password': p };
   console.log(data);
+  fetch("http://localhost:3001/auth/login", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  }).then(res => res.json())
+    .then(data => {
+      if (data.status) {
+        console.log(data)
+        hist.push({pathname: '/main', state: {token: data.token}})
+      }
+      else 
+        alert(`You couldn't login. Error message: ${data.err}`)
+    })
 }
 
 export default function LoginPage() {
@@ -23,7 +40,7 @@ export default function LoginPage() {
       <h1>ZALOGUJ SIĘ</h1>
       <LoginInput type="text" label="Login" childref={user} />
       <LoginInput type="password" label="Hasło" childref={pass} />
-      <LoginButton text="ZALOGUJ SIĘ" onClick={() => { login(user, pass); history.push('/main') }} />
+      <LoginButton text="ZALOGUJ SIĘ" onClick={() => { login(user, pass, history) }} />
       <RegisterButton />
       <Logo />
     </Page>

@@ -40,7 +40,7 @@ export default function input({ type, label, childref }) {
         required={true} 
         type={type} 
         minLength={type === 'password' ? 8 : 3} 
-        pattern={type === 'password' ? '^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).*$' : '*'} 
+        maxLength={type === 'email' ? 40 : type === 'password' ? null : 25}
         placeholder={type === 'password' ? 'password123' : (type==='email' ? 'JonDoe@example.com' : 'John Doe')}
         ref={childref} />
     </InputBox>
