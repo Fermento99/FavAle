@@ -9,7 +9,7 @@ export default function PageChooser({ curr, setPage }) {
   const pages = getSurr(curr)
   return (
     <div>
-      <NormalButton onClick={() => setPage(curr-1 < 0 ? 0 : curr-1)}>&lt;&lt;</NormalButton>
+      <NormalButton onClick={() => setPage(curr-1 < 1 ? 1 : curr-1)}>&lt;&lt;</NormalButton>
       {pages.map(page => page ? <NumberButton key={page} onclick={() => setPage(page)} curr={page === curr} page={page} /> : null)}
       <NormalButton onClick={() => setPage(curr+1)}>&gt;&gt;</NormalButton>
   </div>

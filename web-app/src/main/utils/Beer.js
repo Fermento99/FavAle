@@ -6,7 +6,7 @@ import Ingredients from './Ingredients'
 const Image = styled.img`
   max-width: 80%;
   max-height: 20em;
-  margin:1em;
+  margin: 1em;
 `
 
 const BeerContainer = styled.div`
@@ -15,6 +15,7 @@ const BeerContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 30%;
+  min-width: 20em;
   height: auto;
   border: solid black 2px;
   border-radius: 5px;

@@ -5,9 +5,11 @@ import styled from 'styled-components'
 const BeersConteiner = styled.div`
   box-sizing: border-box;
   width: 75%;
+  min-width:375px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 `
 
 export default function BeerList({ curr }) {
