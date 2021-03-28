@@ -8,8 +8,8 @@ const UniButton = styled.button`
   margin: 1em;
   height: 2.8em;
   color: white;
-  background-color: black;
-  border: solid black 1px;
+  background-color: #002366;
+  border: solid #002366 1px;
   border-radius: 5px;
 `
 

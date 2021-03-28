@@ -17,7 +17,7 @@ const BeerContainer = styled.div`
   width: 30%;
   min-width: 20em;
   height: auto;
-  border: solid black 2px;
+  border: solid #002366 2px;
   border-radius: 5px;
   margin: 1.5%;
   padding: .6em;

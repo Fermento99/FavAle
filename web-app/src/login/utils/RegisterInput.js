@@ -11,7 +11,7 @@ const Input = styled.input`
   padding: .8em 1em;
   width: 100%;
   border-radius: 5px;
-  border: solid black 1px;
+  border: solid #002366 1px;
 
   
 
@@ -22,7 +22,7 @@ const Input = styled.input`
     box-shadow: 2px 2px red;
   }
   :placeholder-shown {
-    box-shadow: 2px 2px black;
+    box-shadow: 2px 2px #002366;
   }
   
 `

@@ -11,8 +11,8 @@ const Input = styled.input`
   padding: .8em 1em;
   width: 100%;
   border-radius: 5px;
-  border: solid black 1px;
-  box-shadow: 2px 2px black;
+  border: solid #002366 1px;
+  box-shadow: 2px 2px #002366;
 `
 
 const InputBox = styled.div`
