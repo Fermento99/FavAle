@@ -23,8 +23,24 @@ const login = (user, pass, hist) => {
     .then(data => {
       if (data.status) {
         console.log(data)
-        hist.push('/main')
-        window.sessionStorage.setItem("FA_token", data.token)
+        const token = data.token
+        window.sessionStorage.setItem("FA_token", token)
+        let favourites = []
+        fetch('http://localhost:3001/favs', {
+          method: "GET",
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        }).then(res => res.json())
+          .then(data => {
+            if (data.data) {
+              console.log(data)
+              data.data.forEach(beer => favourites.splice(0, 0, beer.beerId))
+              console.log(favourites)
+              window.sessionStorage.setItem('FA_favourites', JSON.stringify(favourites))
+            }
+          }).then(() => hist.push('/main'))
+        
       }
       else
         alert(`You couldn't login. Error message: ${data.err}`)
@@ -39,7 +55,7 @@ export default function LoginPage() {
   return (
     <Page>
       <h1>ZALOGUJ SIĘ</h1>
-      <LoginInput type="text" label="Login" childref={user} />
+      <LoginInput type="email" label="E-mail" childref={user} />
       <LoginInput type="password" label="Hasło" childref={pass} />
       <LoginButton text="ZALOGUJ SIĘ" onClick={() => { login(user, pass, history) }} />
       <RegisterButton />

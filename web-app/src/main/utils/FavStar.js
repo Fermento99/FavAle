@@ -25,7 +25,12 @@ const click = (fav, setFav, id, hist) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ 'beerId': id })
-    }).then(res => res.json())
+    }).then(res => {
+      if (res.status === 200)
+        return res.json()
+      else
+        throw Error()
+    })
       .then(data => {
         window.sessionStorage.setItem("FA_token", data.token)
         if (data.status) {
@@ -34,6 +39,9 @@ const click = (fav, setFav, id, hist) => {
         else {
           setFav(false);
         }
+      }).catch(e => {
+        alert("You have been logged out")
+        hist.push('/')
       })
   } else {
     favourites.splice(0, 0, id)
@@ -45,15 +53,22 @@ const click = (fav, setFav, id, hist) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ 'beerId': id })
-    }).then(res => res.json())
-      .then(data => {
-        window.sessionStorage.setItem("FA_token", data.token)
-        if (data.dbresonse) {
-          alert(`Error: ${data.dbresonse.err}`)
-        }
-        else
-          setFav(true)
-      })
+    }).then(res => {
+      if (res.status === 200)
+        return res.json()
+      else
+        throw Error('logged out')
+    }).then(data => {
+      window.sessionStorage.setItem("FA_token", data.token)
+      if (data.dbresonse) {
+        alert(`Error: ${data.dbresonse.err}`)
+      }
+      else
+        setFav(true)
+    }).catch(e => {
+      alert("You have been logged out")
+      hist.push('/')
+    })
   }
 }
 
@@ -62,7 +77,7 @@ export default function FavStar({ beerId }) {
   let flag = false
 
   storage = JSON.parse(storage)
-  console.log(storage, beerId,)
+  console.log(storage, beerId)
   if (storage && storage.indexOf(beerId) > -1)
     flag = true
 
