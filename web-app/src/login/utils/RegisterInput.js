@@ -16,13 +16,13 @@ const Input = styled.input`
   
 
   :valid {
-    box-shadow: 2px 2px lightgreen;
+    box-shadow: 3px 3px lightgreen;
   }
   :invalid {
-    box-shadow: 2px 2px red;
+    box-shadow: 3px 3px red;
   }
   :placeholder-shown {
-    box-shadow: 2px 2px #002366;
+    box-shadow: 3px 3px #002366;
   }
   
 `

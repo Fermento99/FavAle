@@ -16,7 +16,7 @@ const Button = styled.button`
 
 const mailme = hist => {
   const token = window.sessionStorage.getItem("FA_token")
-  fetch('http://localhost:3001/mail', {
+  fetch(`${process.env.REACT_APP_API_HOST}/mail`, {
     method: "GET",
     headers: {
       'Authorization': `Bearer ${token}`

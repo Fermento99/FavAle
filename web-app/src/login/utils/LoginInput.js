@@ -6,13 +6,13 @@ const Label = styled.h3`
   width: min-content;
 `
 
-const Input = styled.input`
+const LogInput = styled.input`
   box-sizing: border-box;
   padding: .8em 1em;
   width: 100%;
   border-radius: 5px;
   border: solid #002366 1px;
-  box-shadow: 2px 2px #002366;
+  box-shadow: 3px 3px #002366;
 `
 
 const InputBox = styled.div`
@@ -24,7 +24,7 @@ export default function input({ type, label, childref }) {
   return (
     <InputBox>
       <Label>{label}</Label>
-      <Input type={type} ref={childref} />
+      <LogInput type={type} ref={childref} />
     </InputBox>
   )
 }

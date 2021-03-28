@@ -1,4 +1,6 @@
 /server/node_modules/
+/server/build/
+
 /web-app/node_modules/
 /web-app/coverage/
 /web-app/build/

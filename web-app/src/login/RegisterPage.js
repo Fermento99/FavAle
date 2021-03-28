@@ -13,7 +13,7 @@ const register = (user, mail, pass, hist) => {
   if (!(pass.current.checkValidity() && mail.current.checkValidity() && user.current.checkValidity()))
     return alert("Some data did not validate, try changing some inputs")
   
-  fetch("http://localhost:3001/auth/register", {
+  fetch(`${process.env.REACT_APP_API_HOST}/auth/register`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',

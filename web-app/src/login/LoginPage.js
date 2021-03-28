@@ -13,7 +13,7 @@ const login = (user, pass, hist) => {
   user.current.value = ''
   const data = { 'email': u, 'password': p };
   console.log(data);
-  fetch("http://localhost:3001/auth/login", {
+  fetch(`${process.env.REACT_APP_API_HOST}/auth/login`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
@@ -26,7 +26,8 @@ const login = (user, pass, hist) => {
         const token = data.token
         window.sessionStorage.setItem("FA_token", token)
         let favourites = []
-        fetch('http://localhost:3001/favs', {
+        console.log(`${process.env.REACT_APP_API_HOST}/favs`)
+        fetch(`${process.env.REACT_APP_API_HOST}/favs`, {
           method: "GET",
           headers: {
             'Authorization': `Bearer ${token}`,

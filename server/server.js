@@ -16,6 +16,7 @@ const transporter = mailer.createTransport({
 
 let app = express();
 app.use(express.json());
+app.use(express.static('./build'))
 
 // JWT
 const createToken = user => {
@@ -129,7 +130,7 @@ app.post('/auth/register', (req, res) => {
 
 // serving app
 app.get('/app/*', (req, res) => {
-  //TODO: implement
+  res.sendFile(__dirname + '/build/index.html')
 });
 
 // mail
@@ -158,7 +159,6 @@ app.get('/mail', (req, res) => {
             if (dbres.status) {
               getBeer(dbres.data).then(beerList => {
                 let contents = `Hello ${name}!\nHere is list of your favourite beers:\n\n`;
-                console.log(beerList)
                 beerList.forEach(beer => { contents += `${beer.index}. ${beer.name} (id: ${beer.id})\n` });
                 contents += "\nDon't drink too much at once!\nYour Fav Bartender";
                 const mailOptions = {
@@ -196,5 +196,5 @@ app.get('/mail', (req, res) => {
 });
 
 // running server
-const port = 3001;
-app.listen(port, () => console.log(`listening on port ${port}...`));
+const port = process.env.SERVER_PORT;
+app.listen(port, process.env.SERVER_ADDR, () => console.log(`listening on port ${port}...`));

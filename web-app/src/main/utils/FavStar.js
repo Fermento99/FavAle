@@ -18,7 +18,7 @@ const click = (fav, setFav, id, hist) => {
   if (fav) {
     favourites.splice(favourites.indexOf(id), 1)
     window.sessionStorage.setItem('FA_favourites', JSON.stringify(favourites))
-    fetch('http://localhost:3001/favs', {
+    fetch(`${process.env.REACT_APP_API_HOST}/favs`, {
       method: "DELETE",
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -46,7 +46,7 @@ const click = (fav, setFav, id, hist) => {
   } else {
     favourites.splice(0, 0, id)
     window.sessionStorage.setItem('FA_favourites', JSON.stringify(favourites))
-    fetch('http://localhost:3001/favs', {
+    fetch(`${process.env.REACT_APP_API_HOST}/favs`, {
       method: "POST",
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -77,7 +77,6 @@ export default function FavStar({ beerId }) {
   let flag = false
 
   storage = JSON.parse(storage)
-  console.log(storage, beerId)
   if (storage && storage.indexOf(beerId) > -1)
     flag = true
 
