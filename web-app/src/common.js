@@ -5,7 +5,7 @@ export const Page = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+  /* @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap'); */
   font-family: 'Kanit', sans-serif;
   color: #002366;
 `
