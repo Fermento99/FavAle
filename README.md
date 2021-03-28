@@ -7,8 +7,8 @@ To run app (build web-app and run server) you need to have these installed:
 - mySQL
 
 ## Setup
-App is ready to run, but with some limitations. If you want your app to be accessible outside of your server, you need to change *REACT_APP_API_HOST* constant to match your server's IP address.
-(I hope to change **setup-app.bat** to do that automatically) Then you need to run **setup-app.bat**.
+App is ready to run, but with some limitations. If you want your app to be accessible outside of your server (through web), you need to change *REACT_APP_API_HOST* constant to match your server's IP address.
+(I hope to change **setup-app.bat** to do that automatically) ~~Then you need to run **setup-app.bat**~~ Then you need to run commands from file **setup-app.bat**.
 
 Other option is to run `npm i` in both */server* and */web-app*. Addtionally you need to run `npm run build` inside */web-app* and move so created folder into */server*.
 
