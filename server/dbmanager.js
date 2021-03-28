@@ -85,15 +85,15 @@ const remFav = (fav, callback) => {
   connection.query('DELETE FROM favourites WHERE email = ? AND beerId = ?', [email, favId], (err, res) => {
     if (err) {
       console.log(err);
-      return callback({ status: false, err: err, code: 2 })
+      return callback({ status: false, err: err, code: 2 });
     }
     const aff = res.affectedRows
     if (aff !== 1) {
       msg = `removed ${aff} rows instead of 1`
       console.log(msg);
-      return callback({ status: false, err: msg, code: 2 })
+      return callback({ status: false, err: msg, code: 2 });
     }
-    return callback({ status: true })
+    return callback({ status: true });
   });
   connection.end();
 }
@@ -106,9 +106,23 @@ const getFav = (user, callback) => {
   connection.query('SELECT beerId FROM favourites WHERE email = ?', email, (err, res) => {
     if (err) {
       console.log(err);
-      return callback({ status: false, err: err, code: 2 })
+      return callback({ status: false, err: err, code: 2 });
     }
-    return callback({ status: true, data: res })
+    return callback({ status: true, data: res });
+  });
+}
+
+const getName = (user, callback) => {
+  console.log("getting name");
+  const { email } = user;
+
+  let connection = connect();
+  connection.query('SELECT username FROM users WHERE email = ?', email, (err, res) => {
+    if (err) {
+      console.log(err);
+      return callback({ status: false, err: err, code: 2 });
+    }
+    return callback({ status: true, data: res[0].username });
   });
 }
 
@@ -117,3 +131,4 @@ module.exports.login = login;
 module.exports.addFav = addFav;
 module.exports.remFav = remFav;
 module.exports.getFav = getFav;
+module.exports.getName = getName;

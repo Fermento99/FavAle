@@ -21,7 +21,7 @@ export default function BeerList({ curr }) {
       .then(res => res.json())
       .then(data => setState({ 'curr': curr, 'beers': data }));
     return (
-      // TODO: change to spiners 
+      // TODO: change to spinners 
       <div>
         <p>piwo się ładuje</p>
         <p>piwo się ładuje</p>
